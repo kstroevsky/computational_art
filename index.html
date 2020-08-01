@@ -34,7 +34,6 @@
 					loader.then((successMessage) => {
 						successMessage.addEventListener('mousemove',function(event) {
 							let x = event.screenX;
-							let y = event.screenY;
 
 							let valV = timeV - timeV*x/window.innerWidth;
 
@@ -52,7 +51,22 @@
 						});
 
 						successMessage.addEventListener('touchmove',function(event) {
-							console.log(event.)
+							let evObject = event.changedTouches[0]; 
+							let x = evObject.clientX-100; 
+
+							let valV = timeV - timeV*x/successMessage.width;
+
+							rub.move_to(valV); 
+
+							if (valV < preF) {
+								g = -1; 
+							} else {
+								g = 1; 
+							}
+
+							rub.play();
+
+							preF = valV; 
 						});
 					});
 					
