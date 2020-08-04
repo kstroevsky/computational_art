@@ -32,10 +32,11 @@
 					});
 
 					loader.then((successMessage) => {
+						let width = successMessage.width; 
 						successMessage.addEventListener('mousemove',function(event) {
 							let x = event.screenX;
 
-							let valV = timeV - timeV*x/window.innerWidth;
+							let valV = timeV - timeV*x/width;
 
 							rub.move_to(valV); 
 
@@ -54,7 +55,7 @@
 							let evObject = event.changedTouches[0]; 
 							let x = evObject.clientX-100; 
 
-							let valV = timeV - timeV*x/successMessage.width;
+							let valV = timeV - timeV*x/width;
 
 							rub.move_to(valV); 
 
@@ -68,6 +69,8 @@
 
 							preF = valV; 
 						});
+
+						
 					});
 					
 				}
